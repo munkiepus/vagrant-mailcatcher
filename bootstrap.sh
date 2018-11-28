@@ -31,6 +31,7 @@ WantedBy=multi-user.target
 chmod 644 /etc/systemd/system/mailcatcher.service
 
 # enable mailcatcher on startup
+systemctl daemon-reload
 systemctl enable mailcatcher
 service mailcatcher start
 service mailcatcher status
