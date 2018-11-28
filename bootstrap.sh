@@ -22,7 +22,7 @@ After=systemd-user-sessions.service
 Type=simple
 Restart=on-failure
 User=vagrant
-ExecStart=/usr/local/bin/mailcatcher --smtp-ip 0.0.0.0 --ip 0.0.0.0
+ExecStart=/usr/local/bin/mailcatcher --foreground --smtp-ip 0.0.0.0 --ip 0.0.0.0
 
 [Install]
 WantedBy=multi-user.target
