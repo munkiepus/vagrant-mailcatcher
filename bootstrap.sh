@@ -33,13 +33,6 @@ systemctl enable mailcatcher
 service mailcatcher start
 service mailcatcher status
 
-# use mailcatcher for all php mail sent with sendmail
-echo "sendmail_path = /usr/bin/env $(which catchmail) -f test@local.dev" | sudo tee /etc/php/7.2/mods-available/mailcatcher.ini
-
-sudo phpenmod mailcatcher
-
-sudo service php7.2-fpm restart
-
 # Adding title to MOTD
 sudo apt-get install update-motd
 sudo cat /vagrant/motd.sh > /etc/update-motd.d/01-header
