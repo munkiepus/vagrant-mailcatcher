@@ -12,6 +12,7 @@ apt-get install ruby ruby-dev ruby-all-dev sqlite3 libsqlite3-dev -y
 
 gem install mailcatcher
 
+# create a systemd service
 echo '[Unit]
 Description = MailCatcher
 After=network.target
@@ -29,15 +30,16 @@ WantedBy=multi-user.target
 
 chmod 644 /etc/systemd/system/mailcatcher.service
 
+# enable mailcatcher on startup
 systemctl enable mailcatcher
 service mailcatcher start
 service mailcatcher status
 
 # Adding title to MOTD
-sudo apt-get install update-motd
-sudo cat /vagrant/motd.sh > /etc/update-motd.d/01-header
-sudo chmod 755 /etc/update-motd.d/01-header
-sudo /usr/sbin/update-motd
+apt-get install update-motd -y
+cat /vagrant/motd.sh > /etc/update-motd.d/01-header
+chmod 755 /etc/update-motd.d/01-header
+/usr/sbin/update-motd
 
 # setting hostname
 echo "Setting Hostname"
